@@ -1,0 +1,11 @@
+start_servers = 5
+min_spare_servers = 3
+max_servers = 10
+max_spare_servers = 5
+
+mschap {
+    use_mppe = yes
+    require_encryption = yes
+    require_strong = yes
+    with_ntdomain_hack = yes
+}

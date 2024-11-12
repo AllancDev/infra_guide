@@ -1,0 +1,5 @@
+#exec ntlm_auth {
+#    wait = yes
+#    program = "/usr/bin/ntlm_auth --request-nt-key --domain=MYDOMAIN --username=%{mschap:User-Name} --password=%{User-Password}"
+#    shell_escape = yes
+# }

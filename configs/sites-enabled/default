@@ -1,0 +1,57 @@
+server default {
+    listen {
+        type = auth
+        ipaddr = *
+        port = 0
+    }
+
+    listen {
+        ipaddr = *
+        port = 0
+        type = acct
+    }
+
+    authorize {
+        preprocess
+        chap
+        mschap
+        suffix
+        eap {
+            ok = return
+        }
+        files
+        sql
+    }
+
+    authenticate {
+        Auth-Type PAP {
+            pap
+        }
+        Auth-Type CHAP {
+            chap
+        }
+        Auth-Type MS-CHAP {
+            mschap
+        }
+        eap
+    }
+
+    preacct {
+        preprocess
+        acct_unique
+        suffix
+    }
+
+    accounting {
+        detail
+        sql
+    }
+
+    session {
+        radutmp
+    }
+
+    post-auth {
+        exec
+    }
+}
